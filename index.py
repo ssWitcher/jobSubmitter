@@ -14,6 +14,12 @@ q = Queue.Queue(maxsize=0)
 def read_req():
     payload = request.get_json(force=True)
     input_file_path = payload["input_file_path"]
+    print("=====================")
+    print(payload)
+    print("===================")
+    print("=====================")
+    print(input_file_path)
+    print("===================")
     output_file = input_file_path.split("/")[-1]+"_"+uuid.uuid4()
     worker(q)
     q.put({"input_file_path":input_file_path,"output_file":output_file})
